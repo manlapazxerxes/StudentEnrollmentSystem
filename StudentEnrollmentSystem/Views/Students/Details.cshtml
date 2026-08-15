@@ -1,0 +1,44 @@
+﻿@model StudentEnrollmentSystem.ViewModels.StudentDetailsViewModel
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1>Student Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.FullName</h5>
+
+        <dl class="row">
+            <dt class="col-sm-3">Student Number</dt>
+            <dd class="col-sm-9">@Model.StudentNumber</dd>
+
+            <dt class="col-sm-3">Full Name</dt>
+            <dd class="col-sm-9">@Model.FullName</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">@Model.Email</dd>
+
+            <dt class="col-sm-3">Date of Birth</dt>
+            <dd class="col-sm-9">@Model.DateOfBirth.ToString("MMMM dd, yyyy")</dd>
+        </dl>
+
+        <a asp-action="Edit"
+           asp-route-id="@Model.Id"
+           class="btn btn-warning">
+            Edit
+        </a>
+
+        <a asp-action="Enroll"
+           asp-route-id="@Model.Id"
+           class="btn btn-success">
+            Enroll
+        </a>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Back
+        </a>
+    </div>
+</div>

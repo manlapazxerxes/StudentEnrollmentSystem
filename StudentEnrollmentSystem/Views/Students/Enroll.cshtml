@@ -1,0 +1,69 @@
+﻿@model StudentEnrollmentSystem.ViewModels.EnrollmentCreateViewModel
+
+@{
+    ViewData["Title"] = "Enroll Student";
+}
+
+<h1>Enroll Student</h1>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">
+            @Model.StudentName
+        </h5>
+
+        <form asp-action="Enroll" method="post">
+            <input asp-for="StudentId" type="hidden" />
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label class="form-label">Student</label>
+                <input value="@Model.StudentName"
+                       class="form-control"
+                       readonly />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="CourseId" class="form-label">
+                    Course
+                </label>
+
+                <select asp-for="CourseId"
+                        asp-items="Model.Courses"
+                        class="form-select">
+                    <option value="">-- Select Course --</option>
+                </select>
+
+                <span asp-validation-for="CourseId"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="EnrollmentDate"
+                       class="form-label">
+                    Enrollment Date
+                </label>
+
+                <input asp-for="EnrollmentDate"
+                       type="date"
+                       class="form-control" />
+
+                <span asp-validation-for="EnrollmentDate"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-success">
+                Enroll
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Cancel
+            </a>
+        </form>
+    </div>
+</div>
